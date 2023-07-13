@@ -1,8 +1,8 @@
-from DataAccessLib.database.models import Person
+from .models import Person
 from sqlalchemy.exc import IntegrityError
 
 from app import app
-from ....common import DuplicateEmailException, filter_orm_insert_result, dto_mapper
+from ...common import DuplicateEmailException, filter_orm_insert_result, dto_mapper
 from .sample_mapper_schema import AddPersonInSQLMapperSchema, GetOrDeletePersonFromSQLMapperSchema, \
     UpdatePersonInSQLMapperSchema
 

@@ -1,4 +1,4 @@
-__all__ = ['DuplicateEmailException', 'PersonNotFoundException']
+__all__ = ['DuplicateEmailException', 'PersonNotFoundException', "InvalidSQLDataBase"]
 
 
 class DuplicateEmailException(Exception):
@@ -7,3 +7,8 @@ class DuplicateEmailException(Exception):
 
 class PersonNotFoundException(Exception):
     pass
+
+
+class InvalidSQLDataBase(Exception):
+    def __init__(self, msg):
+        self.msg = msg

@@ -1,4 +1,4 @@
-from UtilsLib.decorators import nested_dataclass
+from .decorators import nested_dataclass
 
 __all__ = ['AddPersonDTO', 'GetOrDeletePersonDTO', 'UpdatePersonDTO']
 

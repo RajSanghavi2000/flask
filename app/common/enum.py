@@ -1,6 +1,6 @@
 from enum import Enum
 
-__all__ = ['RedisKeyEnum', 'QueueEnum', 'StatusCodeEnum', 'SchemaKeysEnum']
+__all__ = ['RedisKeyEnum', 'QueueEnum', 'StatusCodeEnum', 'SchemaKeysEnum', 'DatabaseEnum']
 
 
 class RedisKeyEnum(Enum):
@@ -24,3 +24,7 @@ class SchemaKeysEnum(Enum):
     FORM = 'form'
     VIEW_ARGUMENTS = 'view_arguments'
     FILES = 'files'
+
+
+class DatabaseEnum(Enum):
+    MYSQL = "MySQL"

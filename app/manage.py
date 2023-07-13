@@ -1,10 +1,9 @@
 from flask import Flask
 from flask_log_request_id import RequestID
 from flask_restful import Api
-from UtilsLib import configure_logging, configure_hook
 
 from .config import configure_app
-from .common import (errors, APP_NAME, LOG_FOLDER_LOCATION, LOG_FILE_LOCATION)
+from .common import (errors, APP_NAME, LOG_FOLDER_LOCATION, LOG_FILE_LOCATION, configure_logging, configure_hook)
 
 
 def create_app():
@@ -28,9 +27,3 @@ def create_api(app):
     """ Initialize Flask RESTful"""
     api = Api(app, prefix="/api", errors=errors)
     return api
-
-
-def app_init(message_broker, message_broker_connection_pool):
-    from .common import QueueEnum
-    message_broker.queue_init(message_broker_connection_pool, QueueEnum)
-    return True

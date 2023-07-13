@@ -23,7 +23,7 @@ if __name__ == '__main__':
     """
 
     try:
-        from app import app, message_broker, message_broker_connection_pool, app_init_task
+        from app import app
         # Mount the application
         cherrypy.tree.graft(app, "/")
 
@@ -36,7 +36,6 @@ if __name__ == '__main__':
             'server.shutdown_timeout': app.config['SERVER_SHUTDOWN_TIMEOUT']
         })
         # Start App Initial Task
-        app_init_task()
         cherrypy.engine.start()
         cherrypy.engine.block()
 
