@@ -8,9 +8,6 @@ graylog_expected_result = '<Logger app.manage (INFO)>'
 mysq_orm_engine_expected_result = "Engine(mysql+pymysql://{user}:***@{host}/{db})".format(user=os.environ['MYSQL_DATABASE_USER'],
                                                                                           host=os.environ['MYSQL_DATABASE_HOST'],
                                                                                           db=os.environ['MYSQL_DATABASE_DB'])
-
-message_broker_expected_result = "<class 'MessageBrokerLib.broker.rabbitmq.rabbitmq_pika.rabbitmq_pika.RabbitMQPika'>"
-rabbitmq_connection_pool_expected_result = "<pika_pool.QueuedPool object at"
 api_route_expected_result = "<bound method api_route of <flask_restful.Api object at"
 sample_api = "api{}".format(SAMPLE_API)
 

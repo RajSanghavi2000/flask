@@ -4,15 +4,12 @@ import re
 
 from builtins import int
 from distutils.util import strtobool
-from CachingLib.Redis.handler import RedisHandler
 
 
-from tests.fixtures import (app_fixture, api_fixture, redis_instance_fixture, db_engine_fixture,
-                            db_session_fixture, message_broker_fixture, message_broker_connection_pool_fixture)
+from tests.fixtures import (app_fixture, api_fixture, db_engine_fixture, db_session_fixture)
 from tests.common.constants import (graylog_expected_result, mysq_orm_engine_expected_result,
-                                    message_broker_expected_result, rabbitmq_connection_pool_expected_result,
                                     api_route_expected_result)
-from UtilsLib import configure_logging_log_file, configure_graylog
+from ..app.common import configure_logging_log_file, configure_graylog
 
 
 @pytest.mark.run(order=1)
@@ -57,34 +54,12 @@ def test_gray_logs(app_fixture):
     assert str(app_fixture.logger) == graylog_expected_result
 
 
-@pytest.mark.run(order=4)
-def test_cache_instance(redis_instance_fixture):
-    """This method is used to test class CacheHandlerFactory method ``get_instance()``"""
-
-    assert redis_instance_fixture.master_conn == RedisHandler().master_conn
-    assert redis_instance_fixture.slave_conn == RedisHandler().slave_conn
-
-
 @pytest.mark.run(order=5)
 def test_mysql_orm_connection(db_engine_fixture, db_session_fixture):
     """This method is used to test ORM connection"""
 
     assert str(db_engine_fixture) == mysq_orm_engine_expected_result
     assert str(db_session_fixture.kw.get("bind")) == mysq_orm_engine_expected_result
-
-
-@pytest.mark.run(order=6)
-def test_message_broker(message_broker_fixture):
-    """This method is used to test message broker"""
-
-    assert str(message_broker_fixture) == message_broker_expected_result
-
-
-@pytest.mark.run(order=7)
-def test_message_broker_connection_pool(message_broker_connection_pool_fixture):
-    """This method is used to test message broker connection pool"""
-
-    assert re.match(rabbitmq_connection_pool_expected_result, str(message_broker_connection_pool_fixture)) is not None
 
 
 @pytest.mark.run(order=8)
