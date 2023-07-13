@@ -1,5 +1,6 @@
 import pytest
 
+from tests.fixtures import client_fixture, app_fixture
 from app.common import APP_READINESS_API, APP_LIVENESS_API, APP_TERMINATION_API
 
 

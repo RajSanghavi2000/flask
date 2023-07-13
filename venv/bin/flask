@@ -1,4 +1,4 @@
-#!/home/raj/Desktop/wotnot/flask-template/venv/bin/python
+#!/home/raj/Desktop/flask/venv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys

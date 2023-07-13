@@ -4,10 +4,9 @@ from flask_restful import Resource
 from app import api, app
 from ..common import (SAMPLE_API, UserIdHeaderSchema,
                       GetPersonArgumentsSchema, SetPersonRequestSchema, UpdatePersonRequestSchema,
-                      DeletePersonRequestSchema, PersonResponseSchema,
-                      StatusCodeEnum, AddPersonDTO, GetOrDeletePersonDTO, UpdatePersonDTO)
+                      DeletePersonRequestSchema, PersonResponseSchema, DefaultResponseSchema, StatusCodeEnum,
+                      validate_api_schema, AddPersonDTO, GetOrDeletePersonDTO, UpdatePersonDTO, SchemaKeysEnum,)
 from ..services import PersonsManagementService
-from ..common.UtilsLib import validate_api_schema, SchemaKeysEnum, DefaultResponseSchema
 
 __all__ = ['PersonsManagement']
 
@@ -29,8 +28,7 @@ class PersonsManagement(Resource):
         service = PersonsManagementService(GetOrDeletePersonDTO(**kwargs))
         response = service.get_person()
 
-        return Response(PersonResponseSchema().dumps(response), mimetype="application/json",
-                        status=StatusCodeEnum.SUCCESS.value)
+        return Response(PersonResponseSchema().dumps(response), mimetype="application/json", status=StatusCodeEnum.SUCCESS.value)
 
     @validate_api_schema(schema_key=SchemaKeysEnum.HEADER.value, schema_class=UserIdHeaderSchema, logger=app.logger)
     @validate_api_schema(schema_key=SchemaKeysEnum.JSON.value, schema_class=SetPersonRequestSchema, logger=app.logger)
@@ -50,8 +48,7 @@ class PersonsManagement(Resource):
 
         response = service.add_person()
 
-        return Response(PersonResponseSchema().dumps(response), mimetype="application/json",
-                        status=StatusCodeEnum.CREATED_RESPONSE.value)
+        return Response(PersonResponseSchema().dumps(response), mimetype="application/json", status=StatusCodeEnum.CREATED_RESPONSE.value)
 
     @validate_api_schema(schema_key=SchemaKeysEnum.HEADER.value, schema_class=UserIdHeaderSchema, logger=app.logger)
     @validate_api_schema(schema_key=SchemaKeysEnum.JSON.value, schema_class=UpdatePersonRequestSchema, logger=app.logger)
@@ -73,8 +70,7 @@ class PersonsManagement(Resource):
 
         response = service.update_person()
 
-        return Response(PersonResponseSchema().dumps(response), mimetype="application/json",
-                        status=StatusCodeEnum.SUCCESS.value)
+        return Response(PersonResponseSchema().dumps(response), mimetype="application/json", status=StatusCodeEnum.SUCCESS.value)
 
     @validate_api_schema(schema_key=SchemaKeysEnum.HEADER.value, schema_class=UserIdHeaderSchema, logger=app.logger)
     @validate_api_schema(schema_key=SchemaKeysEnum.JSON.value, schema_class=DeletePersonRequestSchema, logger=app.logger)
@@ -91,5 +87,4 @@ class PersonsManagement(Resource):
 
         service.delete_person()
 
-        return Response(DefaultResponseSchema().dumps(None), mimetype="application/json",
-                        status=StatusCodeEnum.SUCCESS.value)
+        return Response(DefaultResponseSchema().dumps(None), mimetype="application/json", status=StatusCodeEnum.SUCCESS.value)

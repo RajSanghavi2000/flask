@@ -3,6 +3,7 @@ import pytest
 from copy import deepcopy
 from mock import patch
 
+from tests.fixtures import app_fixture, client_fixture
 from tests.common.constants import *
 from tests.common.utils import MockDb
 

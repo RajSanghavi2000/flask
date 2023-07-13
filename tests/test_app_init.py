@@ -7,11 +7,12 @@ from distutils.util import strtobool
 from CachingLib.Redis.handler import RedisHandler
 
 
-from tests.fixtures import (app_fixture, api_fixture, db_engine_fixture, db_session_fixture)
+from tests.fixtures import (app_fixture, api_fixture, redis_instance_fixture, db_engine_fixture,
+                            db_session_fixture, message_broker_fixture, message_broker_connection_pool_fixture)
 from tests.common.constants import (graylog_expected_result, mysq_orm_engine_expected_result,
                                     message_broker_expected_result, rabbitmq_connection_pool_expected_result,
                                     api_route_expected_result)
-from ..app.common.UtilsLib import configure_logging_log_file, configure_graylog
+from UtilsLib import configure_logging_log_file, configure_graylog
 
 
 @pytest.mark.run(order=1)

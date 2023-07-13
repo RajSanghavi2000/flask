@@ -1,6 +1,6 @@
 from enum import Enum
 
-__all__ = ['RedisKeyEnum', 'QueueEnum', 'StatusCodeEnum']
+__all__ = ['RedisKeyEnum', 'QueueEnum', 'StatusCodeEnum', 'SchemaKeysEnum']
 
 
 class RedisKeyEnum(Enum):
@@ -15,3 +15,12 @@ class QueueEnum(Enum):
 class StatusCodeEnum(Enum):
     SUCCESS = 200
     CREATED_RESPONSE = 201
+
+
+class SchemaKeysEnum(Enum):
+    HEADER = 'header'
+    ARGUMENTS = 'arguments'
+    JSON = 'json'
+    FORM = 'form'
+    VIEW_ARGUMENTS = 'view_arguments'
+    FILES = 'files'
