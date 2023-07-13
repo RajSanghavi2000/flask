@@ -14,7 +14,6 @@ It is a predefined microservice structure with basic configuration. So, We can u
 
 - Python 3.9
 - MySQL 5.7.32
-- RabbitMQ
 - Works on Linux, Windows
 
 
