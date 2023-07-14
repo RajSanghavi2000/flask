@@ -1,5 +1,4 @@
 import pytest
-from mock import patch
 
 
 from app import app, api, db_engine, db_Session

@@ -6,7 +6,6 @@ from builtins import int
 from distutils.util import strtobool
 
 
-from tests.fixtures import (app_fixture, api_fixture, db_engine_fixture, db_session_fixture)
 from tests.common.constants import (graylog_expected_result, mysq_orm_engine_expected_result,
                                     api_route_expected_result)
 from ..app.common import configure_logging_log_file, configure_graylog
