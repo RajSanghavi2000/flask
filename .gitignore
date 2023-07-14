@@ -1,0 +1,82 @@
+# Add any directories, files, or patterns you don't want to be tracked by version control
+# https://github.com/github/gitignore/blob/master/Python.gitignore
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Socket File
+
+*.socket
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*,cover
+.hypothesis/
+
+# Translations
+*.mo
+*.pot
+nosetests.xml
+
+
+# virtualenv
+venv/
+ENV/
+venvs/
+
+# Spyder project settings
+.spyderproject
+
+# Rope project settings
+.ropeproject
+
+# Pycharm
+/.idea/
+
+# Flask Config File
+app/config.cfg
+
+
+
+app/static/node_modules
+app/static/package-lock.json
+app/static/webpack.config.js
+app/common/static/js/bot-scripts/
+/venv/
+/data/logs/
+__pycache__/
+/.idea/
+
