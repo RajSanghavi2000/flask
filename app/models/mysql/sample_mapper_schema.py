@@ -49,6 +49,9 @@ class UpdatePersonInSQLMapper:
     id: int
     phone: str
     modified_by: int
+    email: str
+    first_name: str
+    last_name: str
 
 
 class UpdatePersonInSQLMapperSchema(Schema):
@@ -58,6 +61,9 @@ class UpdatePersonInSQLMapperSchema(Schema):
     id = fields.Integer(required=True)
     phone = fields.String(required=True)
     modified_by = fields.Integer(required=True, data_key='WT_USER_ID')
+    email = fields.String(required=True)
+    first_name = fields.String(required=True)
+    last_name = fields.String(required=True)
 
     @post_load
     def make_obj(self, data, **kwargs):

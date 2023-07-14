@@ -75,7 +75,7 @@ class PersonsManagementService:
             session.commit()
         if not data:
             raise PersonNotFoundException
-        return self.person_data
+        return self.person_dto
 
     def delete_person(self):
         """

@@ -19,17 +19,12 @@ class GetOrDeletePersonDTO:
 
 
 @nested_dataclass
-class UpdateMeta:
-    first_name: str
-    last_name: str
-    email: str
-
-
-@nested_dataclass
 class UpdatePersonDTO:
     id : int
     phone: str
     WT_USER_ID: str
-    meta: UpdateMeta
+    first_name: str
+    last_name: str
+    email: str
 
 

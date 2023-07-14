@@ -24,16 +24,12 @@ class SetPersonRequestSchema(Schema):
     phone = fields.String(required=True, validate=validate.Length(equal=10))
 
 
-class UpdatePersonMetaSchema(Schema):
-    first_name = fields.String(required=True, allow_none=False, validate=validate.Length(min=1, max=50))
-    last_name = fields.String(required=True, allow_none=False, validate=validate.Length(min=1, max=50))
-    email = fields.String(required=True, validate=validate.Email())
-
-
 class UpdatePersonRequestSchema(Schema):
     id = fields.Integer(required=True, allow_none=False)
     phone = fields.String(required=True, validate=validate.Length(equal=10))
-    meta = fields.Nested(UpdatePersonMetaSchema, required=True, allow_none=False)
+    first_name = fields.String(required=False, validate=validate.Length(min=1, max=50))
+    last_name = fields.String(required=False, validate=validate.Length(min=1, max=50))
+    email = fields.String(required=False, validate=validate.Email())
 
 
 class DeletePersonRequestSchema(Schema):

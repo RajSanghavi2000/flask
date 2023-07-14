@@ -13,7 +13,8 @@ def add_person_in_sql(session, person_dto, utc_timestamp):
     mapper = dto_mapper(AddPersonInSQLMapperSchema, person_dto)
     try:
         data = Person(first_name=mapper.first_name, last_name=mapper.last_name, email=mapper.email,
-                      phone=mapper.phone, created_at=utc_timestamp, created_by=mapper.created_by)
+                      phone=mapper.phone, created_at=utc_timestamp, created_by=mapper.created_by,
+                      modified_at=utc_timestamp, modified_by=mapper.created_by)
         session.add(data)
         session.flush()
 
@@ -34,7 +35,11 @@ def update_person_in_sql(session, person_dto, modified_at):
     """This method is used to update the person details into the SQL database"""
 
     mapper = dto_mapper(UpdatePersonInSQLMapperSchema, person_dto)
-    data = session.query(Person).filter_by(id=mapper.id).update(dict(phone=mapper.phone, modified_by=mapper.modified_by,
+    data = session.query(Person).filter_by(id=mapper.id).update(dict(phone=mapper.phone,
+                                                                     first_name=mapper.first_name,
+                                                                     last_name=mapper.last_name,
+                                                                     email=mapper.email,
+                                                                     modified_by=mapper.modified_by,
                                                                      modified_at=modified_at))
     return data
 

@@ -48,7 +48,8 @@ class PersonsManagement(Resource):
 
         response = service.add_person()
 
-        return Response(PersonResponseSchema().dumps(response), mimetype="application/json", status=StatusCodeEnum.CREATED_RESPONSE.value)
+        return Response(PersonResponseSchema().dumps(response), mimetype="application/json",
+                        status=StatusCodeEnum.CREATED_RESPONSE.value)
 
     @validate_api_schema(schema_key=SchemaKeysEnum.HEADER.value, schema_class=UserIdHeaderSchema, logger=app.logger)
     @validate_api_schema(schema_key=SchemaKeysEnum.JSON.value, schema_class=UpdatePersonRequestSchema, logger=app.logger)
@@ -70,7 +71,8 @@ class PersonsManagement(Resource):
 
         response = service.update_person()
 
-        return Response(PersonResponseSchema().dumps(response), mimetype="application/json", status=StatusCodeEnum.SUCCESS.value)
+        return Response(PersonResponseSchema().dumps(response), mimetype="application/json",
+                        status=StatusCodeEnum.SUCCESS.value)
 
     @validate_api_schema(schema_key=SchemaKeysEnum.HEADER.value, schema_class=UserIdHeaderSchema, logger=app.logger)
     @validate_api_schema(schema_key=SchemaKeysEnum.JSON.value, schema_class=DeletePersonRequestSchema, logger=app.logger)
@@ -87,4 +89,5 @@ class PersonsManagement(Resource):
 
         service.delete_person()
 
-        return Response(DefaultResponseSchema().dumps(None), mimetype="application/json", status=StatusCodeEnum.SUCCESS.value)
+        return Response(DefaultResponseSchema().dumps(None), mimetype="application/json",
+                        status=StatusCodeEnum.SUCCESS.value)
